@@ -39,3 +39,13 @@ def main():
         else:
             raise argparse.ArgumentTypeError('Invalid value! Please choose between [semantic, general, som].')
 ```
+
+## Since this model is very large
+If you are unable to fit the model to your GPU, try:
+
+```python
+# split the conversation by
+python train.py --model_name bert_crf --batch_size 4 --hidden_dim 200 --max_utterances 10 --max_seq_len 100 
+# or truncate the tokens in each utterance
+python train.py --model_name bert_crf --batch_size 4 --hidden_dim 200  --max_seq_len 20
+```
